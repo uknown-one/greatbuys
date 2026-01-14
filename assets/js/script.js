@@ -13,12 +13,11 @@ function renderProducts(filter = "") {
   grid.innerHTML = "";
   const filtered = products.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()));
 products.forEach(p => {
-      const card = document.createElement("div");
-      card.className = "card";
+     
   filtered.forEach(product => {
-    const div = document.createElement("div");
-    div.className = "product";
-    card/div.innerHTML = `
+   const card = document.createElement("div");
+      card.className = "card";
+    card.innerHTML = `
       <img src="${product.image}" alt="${product.name}">
       <div class="info">
         <h3>${product.name}</h3>
