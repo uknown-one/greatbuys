@@ -12,26 +12,27 @@ const searchInput = document.getElementById("search");
 function renderProducts(filter = "") {
   grid.innerHTML = "";
   const filtered = products.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()));
-products.forEach(p => {
-     
-  filtered.forEach(product => {
-   const card = document.createElement("div");
+  products.forEach(_product => {
+
+    filtered.forEach(product => {
+      const card = document.createElement("div");
       card.className = "card";
-    card.innerHTML = `
+      card.innerHTML = `
       <img src="${product.image}" alt="${product.name}">
-      <div class="info">
+      <div class="product-details">
         <h3>${product.name}</h3>
         <p>${product.description}</p>
         <p><strong>$${product.price.toFixed(2)}</strong></p>
         <a class="buy" href="${p.link}" target="_blank">Buy on Amazon</a>
       </div>
     `;
-    grid.appendChild(div);
-  });
-}
+      grid.appendChild(div);
+    });
+  },
 
-searchInput.addEventListener("input", (e) => {
-  renderProducts(e.target.value);
-});
+    searchInput.addEventListener("input", (e) => {
+      renderProducts(e.target.value);
+    }));
 
-renderProducts();
+  renderProducts()
+};
