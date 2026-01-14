@@ -12,13 +12,15 @@ const searchInput = document.getElementById("search");
 function renderProducts(filter = "") {
   grid.innerHTML = "";
   const filtered = products.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()));
-
+products.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "card";
   filtered.forEach(product => {
     const div = document.createElement("div");
     div.className = "product";
-    div.innerHTML = `
+    card/div.innerHTML = `
       <img src="${product.image}" alt="${product.name}">
-      <div class="product-details">
+      <div class="info">
         <h3>${product.name}</h3>
         <p>${product.description}</p>
         <p><strong>$${product.price.toFixed(2)}</strong></p>
