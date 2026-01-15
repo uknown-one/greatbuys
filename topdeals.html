@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Deals</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#131921;color:#fff;}
+header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:#2c3e50;}
+header nav a{margin-left:1rem;color:white;text-decoration:none;}
+.container{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;padding:2rem;}
+.card{background:#262626;border:2px solid #00ffaa;border-radius:10px;overflow:hidden;transition:transform .3s;cursor:pointer;}
+.card img{width:100%;display:block;}
+.card-content{padding:1rem;}
+.card-content h3{font-size:1rem;margin-bottom:.5rem;}
+.card-content p{font-size:.8rem;color:#aaa;margin-bottom:.5rem;}
+.card-content .price{font-weight:bold;color:#00ffaa;margin-bottom:.5rem;}
+.card-content a{display:inline-block;padding:.3rem .6rem;background:#00ffaa;color:#000;border-radius:3px;}
+.card:hover{transform:scale(1.05);}
+</style>
+</head>
+<body>
+<header>
+  <h2>Top Deals</h2>
+  <nav><a href="index.html">Home</a></nav>
+</header>
+<div class="container" id="topDealsGrid"></div>
+<script>
+const products=[
+  {id:1,name:"KOSPECT Pulse Smart Watch",price:89.99,image:"assets/img/watch.jpg",description:"The sport smart watches for men support automatic recognition of six common sports like walking, running, cycling, and elliptical-no manual selection needed. With 170+ sports modes including running, cycling, skateboarding, and climbing, it's ideal for runners, fitness lovers, and active lifestyles.",link:"https://amzn.to/3LAdIub"},
+  {id:2,name:"Technics Premium Hi-Fi True Wireless Bluetooth Earbuds",price:197.90,image:"assets/img/earbuds.jpg",description:"Advanced Noise Cancelling, 3 Device Multipoint Connectivity, Hi-Res Audio + Enhanced Calling",link:"https://amzn.to/4qlBQzS"},
+  {id:3,name:"Marshall Emberton III Portable Bluetooth Speaker",price:179.99,image:"assets/img/btspeaker.jpg",description:"Rugged Waterproof IP67 Design | Loud Stereo Sound, Deep Bass with 32+ Hr Playtime | Compact and Wireless for Travel and Outdoors - Black & Brass",link:"https://amzn.to/3LtbfSu"},
+  {id:4,name:"16 Inch AMD Gaming Laptop",price:587.39,image:"assets/img/laptop.jpg",description:"FHD Screen Laptop with Ryzen 7 7735HS Processor up to 4.75GHz, 16GB RAM 512GB ROM Windows 11 Laptop Compute, HDMI, WiFi, Bluetooth, Type-C, Webcam, Backlit Keyboard",link:"https://amzn.to/4aZN6NQ"},
+  {id:5,name:"Lamicall Adjustable Laptop Stand",price:35.99,image:"assets/img/stand.jpg",description:"Portable Laptop Riser, Aluminum Laptop Stand for Desk Foldable, Ergonomic Computer Notebook Stand Holder for MacBook Air Pro, Dell XPS, HP (10-17.3'') - Silver",link:"https://amzn.to/3NknsJN"}
+];
+
+const grid=document.getElementById("topDealsGrid");
+products.forEach(p=>{
+  const card=document.createElement("div");
+  card.className="card";
+  card.innerHTML=`<img src="${p.image}" alt="${p.name}"><div class="card-content"><h3>${p.name}</h3><p>${p.description}</p><div class="price">$${p.price.toFixed(2)}</div><a href="${p.link}" target="_blank">Buy</a></div>`;
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>
+
