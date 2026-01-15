@@ -40,33 +40,59 @@
     }
   ];
 
-  const grid = document.getElementById("productGrid");
   const searchInput = document.getElementById("search");
 
-  function renderProducts(filter = "") {
-    grid.innerHTML = "";
-    const filtered = products.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()));
-    products.forEach(_product => {
+ let index = 0;
 
-        filtered.forEach(product => {
-          const card = document.createElement("div");
-          card.className = "card";
-          card.innerHTML = `
-        <img src="${product.image}" alt="${product.name}">
-        <div class="product-details">
-        <h3>${product.name}</h3>
-        <p>${product.description}</p>
-        <p><strong>$${product.price.toFixed(2)}</strong></p>
-        <a class="buy" href="${product.link}" target="link">Buy on Amazon</a>
-        </div>
-        `;
-          grid.appendChild(card);
-        });
-      },
+ const img = document.querySelector("#product-image img");
+ const nameEl = document.getElementById("product-name");
+ const priceEl = document.getElementById("price");
+ const linkEl = document.getElementById("link");
+ const productLink = document.getElementById("product-image");
 
-      searchInput.addEventListener("input", (e) => {
-        renderProducts(e.target.value);
-      }));
+ function showProduct(i) {
+   const p = products[i];
+   img.src = p.image;
+   nameEl.innerHTML = p.name;
+   priceEl.innerHTML = `$${p.price.toFixed(2)} <span class="highlight" id="link">Buy</span>`;
+   linkEl.textContent = "Buy";
+   productLink.href = p.link;
+ }
 
-    renderProducts()
-  };
+ // initial load
+ showProduct(index);
+
+ // click card to cycle products
+ const card = document.getElementById("card");
+ card.addEventListener("click", () => {
+   index = (index + 1) % products.length;
+   showProduct(index);
+ });
+
+ // tilt effect
+ const container = document.querySelector(".container");
+ container.addEventListener("mousemove", e => {
+   const rect = container.getBoundingClientRect();
+   const x = e.clientX - rect.left;
+   const y = e.clientY - rect.top;
+   const cx = rect.width / 2,
+     cy = rect.height / 2;
+   const rotateY = ((x - cx) / cx) * 12;
+   const rotateX = -((y - cy) / cy) * 12;
+   card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+ });
+
+ container.addEventListener("mouseleave", () => {
+   card.style.transform = "rotateX(0deg) rotateY(0deg)";
+ });
+
+ // glare follow mouse
+ card.addEventListener("mousemove", e => {
+   const r = card.getBoundingClientRect();
+   const x = ((e.clientX - r.left) / r.width) * 100;
+   const y = ((e.clientY - r.top) / r.height) * 100;
+   glare.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,.15), transparent 60%)`;
+   glare.style.opacity = 1;
+ });
+
+ card.addEventListener("mouseleave", () => glare.style.opacity = 0);
