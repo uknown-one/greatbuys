@@ -1,70 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product Store</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Great Buys Store</title>
+
 </head>
-
 <body>
-  <header>
-    <h2>Great Buys</h2>
-    <input type="text" id="search" placeholder="Search products..." />
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Top Deals</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
-  <section class="hero">
-    <h1>Handpicked Amazon Finds</h1>
-    <p>
-      Smart gadgets, home upgrades, and daily essentials — all in one place.
-    </p>
-  </section>
-  <section>
-    <div class="container" >
-      <div id="card">
-        <div class="card-content">
-          <div class="card-glare"></div>
-          <div class="cyber-lines">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <a id="product-image" href="#" target="_blank">
-            <img src="." alt="Product" />
-          </a>
 
-          <div class="title" id="product-name"></div>
-          <div class="glowing-elements">
-            <div class="glow-1"></div>
-            <div class="glow-2"></div>
-            <div class="glow-3"></div>
-          </div>
+<header>
+  <h2>Great Buys</h2>
+  <input type="text" id="search" placeholder="Search products...">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="top-deals.html">Top Deals</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
 
-          <div class="subtitle" id="price">
-            <span></span>
-            <span class="highlight" id="link"></span>
-          </div>
+<section class="hero">
+  <h1>Handpicked Amazon Finds</h1>
+  <p>Smart gadgets, home upgrades, and daily essentials — all in one place.</p>
+</section>
 
-          <div class="card-particles">
-            <span></span><span></span><span></span> <span></span><span></span><span></span>
-          </div>
-            <div class="corner-elements">
-              <span></span><span></span><span></span><span></span></div>
-              <div class="scan-line"></div>
-            </div>
-          </div>
-        </div>
-   
-  </section>
+<!-- Cyber Card -->
+<div class="container">
+  <div id="card">
+    <div class="card-content">
+      <div class="card-glare"></div>
+      <div class="cyber-lines"><span></span><span></span><span></span><span></span></div>
+      <a id="product-image" href="#" target="_blank"><img src="." alt="Product"></a>
+      <div class="title" id="product-name"></div>
+      <div class="glowing-elements"><div class="glow-1"></div><div class="glow-2"></div><div class="glow-3"></div></div>
+      <div class="subtitle" id="price"><span></span><span class="highlight" id="link"></span></div>
+      <div class="product-description"><div class="scrolling-text" id="product-desc"></div></div>
+    </div>
+  </div>
+</div>
 
-  <footer>
-    <p>© 2024 Product Store. All rights reserved.</p>
-  </footer>
+<!-- Newsletter -->
+<div class="newsletter">
+  <h3>Subscribe for Product Updates</h3>
+  <input type="email" id="email" placeholder="Your email">
+  <button onclick="subscribe()">Subscribe</button>
+  <p id="newsletter-msg"></p>
+</div>
 
-  <script src="assets/js/script.js"></script>
+<footer>
+  <p>© 2024 Product Store. All rights reserved.</p>
+</footer>
+
+<script src="assets/js/script.js">
+</script>
 </body>
-
 </html>
