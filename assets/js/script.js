@@ -138,7 +138,7 @@ const blogContainer = document.getElementById("blog-cards");
 blogPosts.forEach((post) => {
   const card = document.createElement("div");
   card.className = "blog-card";
-  card.innerHTML = `<img src="${post.image}" alt="${post.title}"><h3>${post.title}</h3><p class="excerpt">${post.excerpt}</p><p class="fullText" style="display:none;white-space:pre-line;">${post.fullText}</p><button>Read More</button>`;
+  card.innerHTML = `<img src="${post.image}" alt="${post.image}"><h3>${post.title}</h3><p class="excerpt">${post.excerpt}</p><p class="fullText" style="display:none;white-space:pre-line;">${post.fullText}</p><button>Read More</button>`;
   const btn=card.querySelector('button');
 const fullText=card.querySelector('.fullText');
 btn.addEventListener('click',()=>{
