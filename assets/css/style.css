@@ -127,6 +127,28 @@ hero::after {
   opacity: .5;
 }
 
+.glow {
+  position: absolute;
+  inset: -20px;
+  border-radius: 24px;
+  background: radial-gradient(circle at center, rgba(0, 255, 255, 0.25), transparent 70%);
+  filter: blur(30px);
+  z-index: -1;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+
+
 .btn3d {
   background: cyan;
   color: black;
