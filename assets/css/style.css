@@ -1,4 +1,3 @@
-/* === Basic Reset === */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,64 +6,48 @@
 }
 
 body {
-  background: #0ff;
-  color: #fff;
+  background: #000;
+  color: #0ff;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* === Header === */
 header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   padding: 1rem;
-
 }
 
-header h2 {
-  font-size: 1.5rem;
-
-}
-
-header nav a {
-  margin-left: 1rem;
-  font-size: 0.9rem;
-  color: white;
-  text-decoration: none
-}
-
-header input {
+header nav input {
   padding: 0.5rem;
   border: none;
   border-radius: 3px;
   width: 200px;
 }
 
+header nav a {
+  margin-left: 1rem;
+  color: white;
+  text-decoration: none;
+}
 
-/* === Hero Section === */
 .hero {
   background-image: url('assets/img/heroimage.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  height: 60vh;
   position: relative;
   overflow: hidden;
-  text-align: center;
 }
 
-hero::after {
+.hero::after {
   content: "";
-  position:
-    absolute;
+  position: absolute;
   inset: 0;
   background: radial-gradient(circle at center, rgba(0, 255, 255, .25), rgba(0, 0, 0, .7));
 }
@@ -75,44 +58,43 @@ hero::after {
   font-size: 4rem;
   letter-spacing: .3rem;
   text-shadow: 0 0 20px cyan;
-
 }
 
 .hero p {
+  position: relative;
+  z-index: 1;
   max-width: 600px;
-  margin: auto;
+  margin-top: 1rem;
 }
 
-/* Carousel layout */
 .carousel-viewport {
   width: 100%;
   overflow: hidden;
+  margin: 4rem 0;
 }
 
 .carousel-track {
   display: flex;
   gap: 2rem;
-  padding: 6rem 0;
-  justify-content: center;
-  /* initial center before JS positions */
-  transition: transform .6s ease;
-  perspective: 1200px;
-  will-change: transform;
+  transition: transform .5s ease;
+  padding: 2rem 0;
+  position: relative;
 }
 
 .card {
   width: 250px;
-  height: 350px;
   background: #111;
   border-radius: 16px;
   box-shadow: 0 0 25px rgba(0, 255, 255, .3);
   padding: 1rem;
+  flex: 0 0 auto;
   transition: transform .3s, opacity .3s;
   transform-style: preserve-3d;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex: 0 0 auto;
+  cursor: pointer;
+  position: relative;
 }
 
 .card img {
@@ -123,23 +105,80 @@ hero::after {
 }
 
 .card.inactive {
-  transform: rotateY(30deg) scale(.85);
   opacity: .5;
+  transform: scale(.85) rotateY(30deg);
+}
+
+.btn3d {
+  background: cyan;
+  color: black;
+  border: none;
+  padding: .7rem;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 0 20px cyan;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.btn3d:hover {
+  transform: rotateX(-15deg) rotateY(15deg) scale(1.05);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+.controls button {
+  background: none;
+  color: cyan;
+  border: 1px solid cyan;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.newsletter {
+  text-align: center;
+  margin: 2rem;
+}
+
+.newsletter input {
+  padding: .5rem;
+  border-radius: 3px;
+  border: none;
+  width: 220px;
+  margin-right: 10px;
+}
+
+.newsletter button {
+  padding: .5rem 1rem;
+  border-radius: 3px;
+  border: none;
+  background: #00ffaa;
+  cursor: pointer;
+  color: black;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: #aaa;
 }
 
 .glow {
   position: absolute;
   width: 100px;
   height: 100px;
-  inset: -20px;
   border-radius: 24px;
-  background: radial-gradient(circle at center, rgba(0, 255, 255, 0.25), transparent 70%);
+  background: radial-gradient(circle at center, rgba(0, 255, 255, .25), transparent 70%);
   filter: blur(30px);
   z-index: -1;
   animation: shimmer 4s linear infinite;
-  transition: opacity .3s;
 }
-
 
 @keyframes shimmer {
   0% {
@@ -151,70 +190,53 @@ hero::after {
   }
 }
 
-
-
-.btn3d {
-  background: cyan;
-  color: black;
-  border: none;
-  padding: .7rem;
-  border-radius: 12px;
-  font-weight:
-    bold;
-  box-shadow: 0 0 20px cyan;
-  transition: .3s;
-  cursor: pointer;
+.blog-section {
+  padding: 4rem 2rem;
+  background: #111;
 }
 
-.btn3d:hover {
-  transform: rotateX(-15deg) rotateY(15deg) scale(1.05);
-
-}
-
-.controls {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 5rem;
-
-}
-
-.controls button {
-  background: none;
+.blog-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
   color: cyan;
-  border: 1px solid cyan;
-  padding: .5rem 1rem;
-  cursor: pointer;
-  font-size: 1.2rem;
-
+  text-shadow: 0 0 10px cyan;
 }
 
-/*footer*/
-footer {
-  text-align: center;
-  padding: 2rem;
-  color: #aaa;
+.blog-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
 }
 
-/* === Newsletter Form === */
-.newsletter {
-  margin: 2rem auto;
-  text-align: center;
+.blog-card {
+  background: #222;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 300px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, .3);
+  transition: transform .3s;
 }
 
-.newsletter input[type="email"] {
-  padding: .5rem;
-  border-radius: 3px;
-  border: none;
-  width: 220px;
-  margin-right: 10px;
+.blog-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
 
-.newsletter button {
-  padding: .5rem 1rem;
-  border: none;
-  border-radius: 3px;
-  background: #00ffaa;
-  color: #000;
-  cursor: pointer;
+.blog-card h3 {
+  margin-bottom: .5rem;
+}
+
+.blog-card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #0ff;
+}
+
+.blog-card:hover {
+  transform: scale(1.05);
 }
