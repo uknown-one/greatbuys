@@ -1,59 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="asset/css/style.css">
-  <title>Great Buys</title>
-</head>
-<body>
-  <header>  
-<h2>Great Buys</h2>
-    <nav>
-       <input type="text" id="search" placeholder="Search products...">
-      <a href="topdeals.html">Home</a>
-<a href="#">Top Deals</a>
-<a href="#">Contact</a>
-    </nav>
-</header>
-  <section class="hero" id="hero">
-<h1>Handpicked Amazon Finds</h1>
-<p>Smart gadgets, home upgrades, and daily essentials — all in one place.</p>
-</section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Great Buys</title>
+  </head>
 
-  <section class="carousel-viewport">
-    <div class="carousel-track" id="track">
+  <body>
+    <header>
+      <h2>Great Buys</h2>
+      <nav>
+        <input type="text" id="search" placeholder="Search products..." />
+        <a href="topdeals.html">Home</a>
+        <a href="#">Top Deals</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="hero">
+      <h1>Handpicked Amazon Finds</h1>
+      <p>
+        Smart gadgets, home upgrades, and daily essentials — all in one place.
+      </p>
+    </section>
+
+    <section class="carousel-viewport">
       <div class="scan-line"></div>
-        <div class="glow"></div>
+      <div class="glow"></div>
+      <div class="carousel-track" id="track">
+      </div>
+    </section>
+
+    <div class="controls">
+      <button id="prev">◀</button>
+      <button id="next">▶</button>
     </div>
-  </section>
 
-  <div class="controls">
-    <button id="prev">◀</button>
-    <button id="next">▶</button>
-  </div>
-<div class="blog-section">
     <div class="glowing-elements">
-        <div class="glow-1"></div>
-        <div class="glow-2"></div>
-    <div class="glow-3"></div>
-  <div class="glow"><h2>Latest Blog Posts</h2></div>
-  <div class="blog-cards" id="blog-cards"></div>
-</div>
-</div>
-<!-- Newsletter -->
-<div class="newsletter">
-  <h3>Subscribe for Product Updates</h3>
-  <input type="email" id="email" placeholder="Your email">
-  <button onclick="subscribe()">Subscribe</button>
-  <p id="newsletter-msg"></p>
-</div>
-<footer>
-  <p>As an Amazon Associate, we earn from qualifying purchases.</p>
-  <p>© 2026 ProductStore. All rights reserved.</p>
-</footer>
+      <div class="blog-section">
+        <div class="glow-1">
+          <h2>Latest Blog Posts</h2>
+        </div>
+        <div class="glow-2">
+          <div class="blog-cards" id="blog-cards"></div>
+        </div>
+        <div class="glow-3"></div>
+      </div>
+    </div>
 
-<script src="assets/js/script.js">
-</script>
-</body>
+    <!-- Newsletter -->
+    <div class="newsletter">
+      <h3>Subscribe for Product Updates</h3>
+      <input type="email" id="email" placeholder="Your email" />
+      <button onclick="subscribe()">Subscribe</button>
+      <p id="newsletter-msg"></p>
+    </div>
+    <footer>
+      <p>As an Amazon Associate, we earn from qualifying purchases.</p>
+      <p>© 2026 ProductStore. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
