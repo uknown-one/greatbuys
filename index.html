@@ -1,43 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="assets/css/style.css">
-  <title>Great Buys Store</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="asset/css/style.css">
+  <title></title>
 </head>
 <body>
-
-<header>
-  <h2>Great Buys</h2>
-  <input type="text" id="search" placeholder="Search products...">
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="top-deals.html">Top Deals</a>
-    <a href="#">Contact</a>
-  </nav>
+  <header id="header">  
+<h1></h1>
+    <nav>
+       <input type="text" id="search" placeholder="Search products...">
+      <a href="#">Home</a>
+<a href="#">Top Deals</a>
+<a href="#">Contact</a>
+    </nav>
 </header>
-
-<section class="hero">
-  <h1>Handpicked Amazon Finds</h1>
-  <p>Smart gadgets, home upgrades, and daily essentials — all in one place.</p>
+  <section class="hero">
+<h2>Handpicked Amazon Finds</h2>
+<p>Smart gadgets, home upgrades, and daily essentials — all in one place.</p>
 </section>
 
-<!-- Cyber Card -->
-<div class="container">
-  <div id="card">
-    <div class="card-content">
-      <div class="card-glare"></div>
-      <div class="cyber-lines"><span></span><span></span><span></span><span></span></div>
-      <a id="product-image" href="#" target="_blank"><img src="." alt="Product"></a>
-      <div class="title" id="product-name"></div>
-      <div class="glowing-elements"><div class="glow-1"></div><div class="glow-2"></div><div class="glow-3"></div></div>
-      <div class="subtitle" id="price"><span></span><span class="highlight" id="link"></span></div>
-      <div class="product-description"><div class="scrolling-text" id="product-desc"></div></div>
-    </div>
+  <section class="carousel-viewport">
+    <div class="carousel-track" id="track"></div>
+  </section>
+
+  <div class="controls">
+    <button id="prev">◀</button>
+    <button id="next">▶</button>
   </div>
-</div>
+
+  
+
 
 <!-- Newsletter -->
 <div class="newsletter">
@@ -46,8 +40,8 @@
   <button onclick="subscribe()">Subscribe</button>
   <p id="newsletter-msg"></p>
 </div>
-
 <footer>
+  <p>As an Amazon Associate, we earn from qualifying purchases.</p>
   <p>© 2024 Product Store. All rights reserved.</p>
 </footer>
 
