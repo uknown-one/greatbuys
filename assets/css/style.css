@@ -1,39 +1,158 @@
 /* === Basic Reset === */
-* { box-sizing: border-box; margin:0; padding:0; font-family: Arial,sans-serif; }
-body { background:#131921; color:#fff; }
-a { text-decoration:none; color:inherit; }
+* { 
+  box-sizing: border-box; 
+  margin:0; 
+  padding:0; 
+  font-family: Arial,sans-serif;
+}
+
+body {
+  background:#0ff;
+  color:#fff; 
+}
+
+a { text-decoration:none;
+   color:inherit; }
 
 /* === Header === */
 header {
-  display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; background:#2c3e50; flex-wrap:wrap;
+  display:flex; 
+  align-items:center; 
+  justify-content: space-between;
+  display: flex;
+  flex-wrap:wrap;
+  padding: 1rem;
+  
 }
-header h2 { font-size:1.5rem; }
-header nav a { margin-left:1rem; font-size:0.9rem; color:white; }
-header input { padding:0.5rem; border:none; border-radius:3px; width:200px; }
+
+header h2 { 
+ font-size:1.5rem;
+  
+}
+
+header nav a {
+  margin-left:1rem; 
+  font-size:0.9rem;
+  color:white; 
+  text-decoration:none
+}
+header input { 
+  padding:0.5rem;
+  border:none; 
+  border-radius:3px; 
+  width:200px; }
+
 
 /* === Hero Section === */
 .hero {
-  padding:4rem 2rem; background:url('https://picsum.photos/1600/900?blur=1') center/cover fixed; text-align:center;
+  background-image: url('https://picsum.photos/1600/900?blur=1');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  text-align:center;
 }
-.hero h1 { font-size:2.2rem; margin-bottom:0.5rem; }
-.hero p { max-width:600px; margin:auto; }
+   hero::after { 
+    content: ""; 
+    position:
+    absolute; 
+    inset: 0; 
+    background: radial-gradient(circle at center, rgba(0,255,255,.25), rgba(0,0,0,.7));
+   }
 
-/* === Card Container === */
-.container { position:relative; width:190px; height:254px; margin:2rem auto; transition:200ms; }
-.container:active { width:180px; height:245px; }
-#card { position:absolute; inset:0; display:flex; justify-content:center; align-items:center; transition: transform 0.3s; background:linear-gradient(45deg,#1a1a1a,#262626); border:2px solid rgba(255,255,255,.1); overflow:hidden; border-radius:20px; }
-.card-content { position:relative; width:100%; height:100%; }
+.hero h1 { 
+ position: relative; 
+  z-index: 1;
+  font-size: 4rem;
+  letter-spacing: .3rem; text-shadow: 0 0 20px cyan; 
 
-/* === Product Image === */
-#product-image { position:absolute; top:65px; left:50%; transform:translateX(-50%); z-index:5; }
-#product-image img { width:90px; filter:drop-shadow(0 0 12px rgba(0,255,170,.5)); animation:floatImg 4s ease-in-out infinite; transition:transform .3s,filter .3s; }
-.container:hover #product-image img { transform:scale(1.1); filter:drop-shadow(0 0 18px rgba(0,255,170,.8)); }
-@keyframes floatImg {0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+}
+.hero p { 
+  max-width:600px; 
+  margin:auto; 
+}
 
-/* === Product Title & Price === */
-.title { opacity:0; position:absolute; top:25px; width:100%; text-align:center; font-size:24px; font-weight:800; letter-spacing:2px; background:linear-gradient(45deg,#00ffaa,#00a2ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; filter:drop-shadow(0 0 15px rgba(0,255,170,.4)); }
-.subtitle { position:absolute; bottom:40px; width:100%; text-align:center; font-size:12px; color:rgba(255,255,255,.6); }
-.highlight { margin-left:6px; font-weight:bold; background:linear-gradient(90deg,#5c67ff,#ad51ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  /* Carousel layout */
+    .carousel-viewport { 
+      width: 100%; 
+      overflow: hidden;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 2rem;
+      padding: 6rem 0;
+      justify-content: center; /* initial center before JS positions */
+      transition: transform .6s ease;
+      perspective: 1200px;
+      will-change: transform;
+    }
+  .card {
+      width: 250px; 
+    height: 350px; 
+    background: #111;
+    border-radius: 16px;
+      box-shadow: 0 0 25px rgba(0,255,255,.3);
+    padding: 1rem;
+      transition: transform .3s, opacity .3s;
+    transform-style: preserve-3d;
+      display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    flex: 0 0 auto;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .card.inactive {
+      transform: rotateY(30deg) scale(.85); 
+      opacity: .5;
+    }
+
+    .btn3d {
+      background: cyan;
+      color: black; 
+      border: none; 
+      padding: .7rem; 
+      border-radius: 12px; 
+      font-weight:
+        bold; box-shadow: 0 0 20px cyan;
+      transition: .3s; cursor: pointer; 
+    }
+
+    .btn3d:hover { 
+      transform: rotateX(-15deg) rotateY(15deg) scale(1.05); 
+    
+    }
+
+    .controls { 
+      display: flex;
+      justify-content: center;
+      gap: 2rem; 
+      margin-bottom: 5rem;
+      
+    }
+    .controls button {
+      background: none; 
+      color: cyan; 
+      border: 1px solid cyan; 
+      padding: .5rem 1rem; 
+      cursor: pointer; 
+      font-size: 1.2rem;
+    
+    }
+
+
+
+
 
 /* === Glowing Elements === */
 .glowing-elements { position:absolute; inset:0; pointer-events:none; }
