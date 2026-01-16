@@ -10,7 +10,7 @@ const searchInput = document.getElementById("search");
   const track = document.getElementById('track');
     let index = 0;
 
-    function build() {
+    function build(filter= "") {
       track.innerHTML = '';
         const filtered = products.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()));
      filtered.forEach((p, i) => {
@@ -56,9 +56,9 @@ const searchInput = document.getElementById("search");
     // Auto slide
     setInterval(() => { index = (index + 1) % products.length; positionTrack(); }, 3000);
 
-    // Parallax header
+    // Parallax hero
     window.addEventListener('scroll', () => {
-      const header = document.getElementById('header');
+      const header = document.getElementById('hero');
       const offset = window.scrollY * 0.5;
       header.style.transform = `translateY(${offset}px)`;
       header.style.opacity = 1 - window.scrollY / 400;
@@ -66,38 +66,9 @@ const searchInput = document.getElementById("search");
     window.addEventListener('resize', positionTrack);
 
 
-
-  // Reset animation
-  descEl.style.animation = "none";
-  const containerWidth = descEl.parentElement.offsetWidth;
-  const textWidth = descEl.scrollWidth;
-  if(textWidth <= containerWidth){
-    descEl.style.transform="translateX(0)";
-    descEl.style.animation="none";
-  }else{
-    const speed=30; // px/sec
-    const duration=textWidth/speed;
-    descEl.style.animation=`scroll-left ${duration}s linear infinite`;
-  }
-}
-
-// Initial load
-showProduct(index);
-
 // Cycle products on click
 card.addEventListener("click",()=>{index=(index+1)%products.length; showProduct(index);});
 
-// Tilt effect
-container.addEventListener("mousemove", e=>{
-  const rect = container.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  const cx = rect.width/2, cy = rect.height/2;
-  const rotateY = ((x-cx)/cx)*12;
-  const rotateX = -((y-cy)/cy)*12;
-  card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-});
-container.addEventListener("mouseleave",()=>{card.style.transform="rotateX(0deg) rotateY(0deg)";});
 
 // Glare follow mouse
 card.addEventListener("mousemove", e=>{
