@@ -5,28 +5,67 @@ const products = [
   {id:4,name:"16 Inch AMD Gaming Laptop",price:587.39,image:"assets/img/laptop.jpg",description:"FHD Screen Laptop with Ryzen 7 7735HS Processor up to 4.75GHz, 16GB RAM 512GB ROM Windows 11 Laptop Compute, HDMI, WiFi, Bluetooth, Type-C, Webcam, Backlit Keyboard",link:"https://amzn.to/4aZN6NQ"},
   {id:5,name:"Lamicall Adjustable Laptop Stand",price:35.99,image:"assets/img/stand.jpg",description:"Portable Laptop Riser, Aluminum Laptop Stand for Desk Foldable, Ergonomic Computer Notebook Stand Holder for MacBook Air Pro, Dell XPS, HP (10-17.3'') - Silver",link:"https://amzn.to/3NknsJN"}
 ];
+const searchInput = document.getElementById("search");
 
-const img = document.querySelector("#product-image img");
-const nameEl = document.getElementById("product-name");
-const priceEl = document.getElementById("price");
-const linkEl = document.getElementById("link");
-const productLink = document.getElementById("product-image");
-const descEl = document.getElementById("product-desc");
-const glare = document.querySelector(".card-glare");
-const card = document.getElementById("card");
-const container = document.querySelector(".container");
+  const track = document.getElementById('track');
+    let index = 0;
 
-let index = 0;
+    function build() {
+      track.innerHTML = '';
+        const filtered = products.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()));
+     filtered.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'card' + (i === index ? '' : ' inactive');
+        card.innerHTML = `
+          <img src="${p.img}"  alt="${product.name}"/>
+          <div class="product-details">
+          <div><h2>${p.name}</h2><p><strong>${p.price}</strong></p>
+                  <p>${product.description}</p></div>
+          <button class="btn3d">${product.link}</button>`;
 
-// Show product
-function showProduct(i){
-  const p = products[i];
-  img.src = p.image;
-  nameEl.innerHTML = p.name;
-  priceEl.innerHTML = `$${p.price.toFixed(2)} <span class="highlight" id="link">Buy</span>`;
-  linkEl.textContent="Buy";
-  productLink.href = p.link;
-  descEl.textContent = p.description;
+        // 3D tilt on hover
+        card.addEventListener('mousemove', (e) => {
+          const r = card.getBoundingClientRect();
+          const rx = -((e.clientY - r.top) - r.height/2) / 10;
+          const ry = ((e.clientX - r.left) - r.width/2) / 10;
+          card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.05)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = i === index ? 'rotateY(0deg) scale(1)' : 'rotateY(30deg) scale(.85)';
+        });
+
+        track.appendChild(card);
+      });
+      positionTrack();
+    }
+
+    function positionTrack() {
+      const cards = document.querySelectorAll('.card');
+      if (!cards.length) return;
+      const cardWidth = cards[0].offsetWidth;
+      const gap = 32; // 2rem
+      const centerOffset = (window.innerWidth / 2) - (cardWidth / 2);
+      const x = centerOffset - index * (cardWidth + gap);
+      track.style.transform = `translateX(${x}px)`;
+      cards.forEach((c, i) => c.classList.toggle('inactive', i !== index));
+    }
+
+    document.getElementById('next').onclick = () => { index = (index + 1) % products.length; positionTrack(); };
+    document.getElementById('prev').onclick = () => { index = (index - 1 + products.length) % products.length; positionTrack(); };
+
+    // Auto slide
+    setInterval(() => { index = (index + 1) % products.length; positionTrack(); }, 3000);
+
+    // Parallax header
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      const offset = window.scrollY * 0.5;
+      header.style.transform = `translateY(${offset}px)`;
+      header.style.opacity = 1 - window.scrollY / 400;
+    });
+    window.addEventListener('resize', positionTrack);
+
+
 
   // Reset animation
   descEl.style.animation = "none";
