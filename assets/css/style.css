@@ -220,7 +220,7 @@ footer {
   text-align: center;
   margin-bottom: 2rem;
   font-size: 2.5rem;
-  color: cyan;
+  color: #000;
   text-shadow: 0 0 10px cyan;
 }
 
@@ -229,15 +229,19 @@ footer {
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
+  align-items:stretch;
 }
 
 .blog-card {
-  background: #222;
-  border-radius: 12px;
-  padding: 1rem;
-  width: 300px;
-  box-shadow: 0 0 20px rgba(0, 255, 255, .3);
-  transition: transform .3s;
+ background:#222; 
+  border-radius:12px; 
+  padding:1rem; 
+  width:300px;
+  box-shadow:0 0 20px rgba(0,255,255,.3); 
+  display:flex; 
+  flex-direction:column; 
+  justify-content:flex-start; 
+  transition: transform .3s
 }
 
 .blog-card img {
@@ -289,6 +293,7 @@ footer {
   font-size: 0.9rem;
   line-height: 1.4;
   color: #0ff;
+  flex-grow:1;
 }
 
 .blog-card:hover {
