@@ -1,4 +1,5 @@
-const products = [{
+const products = [
+    {
     id: 1,
     name: "KOSPECT Pulse Smart Watch",
     price: 89.99,
@@ -116,10 +117,11 @@ build();
 
 // Blog posts
 const blogPosts = [{
-    title: "5 Must-Have Gadgets for 2024",
+    title: "5 Must-Have Gadgets for 2026 That You Can’t Live Without",
     image: "assets/img/blog1.jpg",
-    excerpt: "Discover the top 5 gadgets you need this year to boost your productivity and lifestyle.",
-  },
+    excerpt:"Technology is evolving faster than ever, and 2026 promises gadgets that feel like they’re straight out of a sci-fi movie. Whether you’re a tech enthusiast or just someone who wants to simplify everyday life, these five devices are set to redefine convenience, productivity, and fun.",
+    fullText:"1. AI-Powered Personal Assistant Devices\n2026’s AI assistants are no longer limited to just answering questions or setting reminders. These smart devices can anticipate your needs, manage your home, optimize your schedule, and even suggest lifestyle improvements based on your habits. Think of it as having a personal life coach that’s awake 24/7.\n\n2. Foldable and Rollable Screens\nSay goodbye to rigid screens. The latest foldable and rollable devices allow you to expand your smartphone or tablet into a full-sized screen when needed and fold it back into pocket-sized portability. This tech isn’t just about cool factor—it’s perfect for mobile gamers, designers, and multitaskers.\n\n3. Next-Gen Wearable Health Monitors\nWearables in 2026 go beyond step counters. Expect devices capable of monitoring blood pressure, hydration levels, sleep quality, and even stress hormones. Some wearables can now detect early signs of illnesses, giving you health insights before symptoms appear. It’s health management with a futuristic twist.\n\n4. Smart Home Robots\nHome automation is getting physical. The latest smart robots can clean, cook, and even assist in elderly care. These robots combine AI with mobility, recognizing family members, adjusting to your preferences, and handling mundane chores while you focus on more important tasks—or relax.\n\n5. Augmented Reality (AR) Glasses\nAR glasses are finally mainstream. They overlay digital information seamlessly onto the real world—directions, notifications, or even virtual workspaces. For professionals, travelers, and gamers alike, AR glasses bring convenience and immersive experiences directly into your field of view.\n\nConclusion\n2026 is shaping up to be a year where the line between science fiction and reality continues to blur. These gadgets aren’t just about novelty—they promise to enhance productivity, improve health, and make everyday life more enjoyable. Keeping an eye on these tech trends ensures you stay ahead in a world that’s moving faster than ever.",
+    },
   {
     title: "How to Choose the Perfect Laptop Stand",
     image: "assets/img/blog2.jpg",
@@ -136,6 +138,11 @@ const blogContainer = document.getElementById("blog-cards");
 blogPosts.forEach((post) => {
   const card = document.createElement("div");
   card.className = "blog-card";
-  card.innerHTML = `<img src="${post.image}" alt="${post.title}"><h3>${post.title}</h3><p>${post.excerpt}</p>`;
+  card.innerHTML = `<img src="${post.image}" alt="${post.title}"><h3>${post.title}</h3><p class="excerpt">${post.excerpt}</p><p class="fullText" style="display:none;white-space:pre-line;">${post.fullText}</p><button>Read More</button>`;
+  const btn=card.querySelector('button');
+const fullText=card.querySelector('.fullText');
+btn.addEventListener('click',()=>{
+if(fullText.style.display==='none'){ fullText.style.display='block'; btn.textContent='Read Less'; } else { fullText.style.display='none'; btn.textContent='Read More'; }
+});
   blogContainer.appendChild(card);
 });
